@@ -1,1681 +1,911 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zhaopeng Cui</title>
+  <meta name="description" content="Zhaopeng Cui | Zhejiang University | 3D Vision, Spatial Intelligence, Embodied AI" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f7f8fa;
+      --text:#111827;
+      --text-light:#4b5563;
+      --line:#e5e7eb;
+      --primary:#1f4ed8;
+      --primary-dark:#173ea8;
+      --tag:#eef2ff;
+      --maxw:1100px;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
 
-    <script type="text/javascript" async="" src="./ZhaopengCui_files/inpage_linkid.js" id="undefined"></script><script type="text/javascript" async="" src="./ZhaopengCui_files/ga.js"></script><script type="text/javascript" async="" src="./ZhaopengCui_files/ga.js"></script><script src="./ZhaopengCui_files/head.js"></script>        <meta name="author" content="Zhaopeng Cui">    <meta name="viewport" content="width=device-width, initial-scale=1">    <link rel="shortcut icon" href="">
-    <meta name="description" content="Zhaopeng Cui is a research professor in the College of Computer Science and Technology at Zhejiang University.">
-    <meta name="keywords" content="Zhaopeng Cui,Zhaopeng,Computer,Vision,Robotics,Graphics,Machine,Learning,Mixed,Reality,Homepage,Zhejiang,ZJU">
-    <title>Zhaopeng Cui</title>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.7;
+    }
 
-    <link rel="stylesheet" href="./ZhaopengCui_files/font.css">
-    <link rel="stylesheet" href="./ZhaopengCui_files/main.css">
-    <script src="./ZhaopengCui_files/main.js"></script>
-    <script src="./ZhaopengCui_files/scroll.js"></script>
+    a{
+      color:var(--primary);
+      text-decoration:none;
+    }
+    a:hover{
+      color:var(--primary-dark);
+      text-decoration:underline;
+    }
 
-  <body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+    .container{
+      width:min(calc(100% - 40px), var(--maxw));
+      margin:0 auto;
+    }
 
-    <div class="outercontainer">
-      
-      <script src="./ZhaopengCui_files/header.js"></script><header>  <div class="container header">    <div class="ftheader text"><a href="https://zhpcui.github.io/#home">Zhaopeng Cui</a></div>  <div class="ftsubheader text"><a href="https://zhpcui.github.io/#contact">Contact</a></div>  <div class="ftsubheader text"><a href="https://zhpcui.github.io/#publications">Publications</a></div>    <div class="ftsubheader text"><a href="https://zhpcui.github.io/#home">Home</a></div>  </div></header>
-      <div class="container body">
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(229,231,235,0.85);
+    }
 
-        <div class="content heading anchor" id="home">
-          <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/ZhaopengCui.jpg" alt="Photo"></div>
-          <div class="text info">
-            <h1>Zhaopeng Cui</h1>
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+
+    .brand{
+      font-weight:700;
+      font-size:1rem;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      font-size:0.95rem;
+    }
+
+    .nav-links a{
+      color:var(--text-light);
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+      text-decoration:none;
+    }
+
+    section{
+      padding:64px 0;
+    }
+
+    .hero{
+      padding:72px 0 48px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:40px;
+      align-items:start;
+    }
+
+    .portrait-wrap{
+      position:relative;
+    }
+
+    .portrait{
+      width:100%;
+      aspect-ratio: 4 / 5;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:#f3f4f6;
+    }
+
+    .hero-text h1{
+      margin:0 0 8px;
+      font-size:2.4rem;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    .hero-subtitle{
+      font-size:1.08rem;
+      color:var(--text-light);
+      margin-bottom:18px;
+    }
+
+    .hero-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 24px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 12px;
+      border-radius:999px;
+      background:var(--tag);
+      color:var(--primary-dark);
+      font-size:0.9rem;
+      font-weight:600;
+    }
+
+    .hero-text p{
+      margin:0 0 14px;
+      max-width:760px;
+      color:var(--text);
+    }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      font-weight:600;
+      transition:all .2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      text-decoration:none;
+      color:var(--primary);
+    }
+
+    .btn.primary{
+      background:var(--primary);
+      border-color:var(--primary);
+      color:#fff;
+    }
+
+    .btn.primary:hover{
+      background:var(--primary-dark);
+      color:#fff;
+    }
+
+    .section-title{
+      font-size:1.6rem;
+      margin:0 0 10px;
+      letter-spacing:-0.02em;
+    }
+
+    .section-desc{
+      margin:0 0 26px;
+      color:var(--text-light);
+      max-width:760px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--bg-soft);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    .card-img{
+      width:calc(100% + 44px);
+      margin:-22px -22px 16px -22px;
+      height:140px;
+      object-fit:cover;
+      border-radius:18px 18px 0 0;
+      border-bottom:1px solid var(--line);
+      display:block;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1.05rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--text-light);
+      font-size:0.96rem;
+    }
+
+    .pub-group{
+      margin-top:34px;
+    }
+
+    .pub-group:first-of-type{
+      margin-top:10px;
+    }
+
+    .pub-group-title{
+      margin:0 0 18px;
+      font-size:1.14rem;
+      letter-spacing:-0.01em;
+    }
+
+    .pub-list{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .pub{
+      display:grid;
+      grid-template-columns: 180px 1fr;
+      gap:22px;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+    }
+
+    .pub-thumb{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      display:block;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#f3f4f6;
+    }
+
+    .pub-title{
+      margin:0 0 8px;
+      font-size:1.12rem;
+      line-height:1.35;
+    }
+
+    .pub-meta{
+      margin:0 0 8px;
+      color:var(--text-light);
+      font-size:0.96rem;
+    }
+
+    .pub-authors{
+      margin:0 0 10px;
+      color:var(--text-light);
+      font-size:0.95rem;
+    }
+
+    .pub-desc{
+      margin:0;
+      color:var(--text);
+      font-size:0.97rem;
+    }
+
+    .pub-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:12px;
+      font-size:0.95rem;
+      font-weight:600;
+    }
+
+    .news{
+      display:grid;
+      gap:12px;
+    }
+
+    .news-item{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:16px;
+      padding:14px 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .news-date{
+      color:var(--text-light);
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+    }
+
+    .panel{
+      background:var(--bg-soft);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+    }
+
+    .panel h3{
+      margin:0 0 14px;
+      font-size:1.08rem;
+    }
+
+    .panel ul{
+      margin:0;
+      padding-left:20px;
+    }
+
+    .panel li{
+      margin-bottom:10px;
+      color:var(--text-light);
+    }
+
+    .highlight-box{
+      padding:24px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .highlight-box p{
+      margin:0;
+    }
+
+    footer{
+      padding:28px 0 42px;
+      border-top:1px solid var(--line);
+      color:var(--text-light);
+      font-size:0.95rem;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .two-col,
+      .cards,
+      .pub{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding-top:48px;
+      }
+
+      .portrait-wrap{
+        max-width:280px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .container{
+        width:min(calc(100% - 24px), var(--maxw));
+      }
+
+      section{
+        padding:48px 0;
+      }
+
+      .hero-text h1{
+        font-size:2rem;
+      }
+
+      .news-item{
+        grid-template-columns:1fr;
+        gap:4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">Zhaopeng Cui</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#news">News</a>
+        <a href="#service">Service</a>
+        <a href="#openings">Openings</a>
+        <!-- <a href="group.html">Group</a> -->
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div class="portrait-wrap">
+          <img class="portrait" src="assets/zhaopengcui.jpg" alt="Zhaopeng Cui portrait">
+        </div>
+
+        <div class="hero-text">
+          <h1>Zhaopeng Cui</h1>
+          <div class="hero-subtitle">
+            Research Professor, College of Computer Science and Technology, Zhejiang University
+          </div>
+
+          <div class="hero-tags">
+            <span class="tag">3D Vision</span>
+            <span class="tag">Spatial Intelligence</span>
+            <span class="tag">Embodied AI</span>
+            <span class="tag">Physical Scene Understanding</span>
+          </div>
+
+          <p>
+            I am a Research Professor at Zhejiang University, affiliated with the College of Computer Science and Technology and the State Key Laboratory of CAD&amp;CG. My research lies at the intersection of computer vision, computer graphics, robotics, and machine learning.
+          </p>
+
+          <p>
+            My group works on <strong>3D reconstruction</strong>, <strong>scene understanding</strong>, <strong>neural scene representations</strong>, <strong>SLAM</strong>, and <strong>physically grounded spatial perception</strong>. More broadly, I am interested in building systems that enable machines to perceive, reconstruct, and reason about the physical world at scale.
+          </p>
+
+          <p>
+            Before joining Zhejiang University, I was a Senior Researcher working with Prof. Marc Pollefeys at ETH Zurich. I received my Ph.D. in Computer Science from Simon Fraser University under the supervision of Prof. Ping Tan.
+          </p>
+
+          <div class="links">
+            <a class="btn primary" href="mailto:zhpcui@zju.edu.cn">Email</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=vwIRwDUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="btn" href="publications.html">Full Publications</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <h2 class="section-title">Research</h2>
+        <p class="section-desc">
+          My research lies at the intersection of computer vision, computer graphics, robotics,
+          and machine learning. I am broadly interested in enabling machines to perceive,
+          reconstruct, understand, and interact with the physical world through visual data.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <img class="card-img" src="assets/3d_reconstruction.png" alt="3D Reconstruction">
+            <h3>3D Reconstruction</h3>
             <p>
-            </p><div>College of Computer Science and Technology</div>
-            <div>Zhejiang University</div>
-            <div>Email:&nbsp;zhpcui AT zju.edu.cn</div>
-			<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zhpcui AT gmail.com</div>
+              We study visual reconstruction methods that recover geometry, appearance, and structure
+              of real-world scenes from sparse, incomplete, or casually captured observations,
+              with an emphasis on scalable representations and editable modeling.
+            </p>
+          </div>
+
+          <div class="card">
+            <img class="card-img" src="assets/3d_understanding.png" alt="3D Scene Understanding">
+            <h3>3D Scene Understanding</h3>
             <p>
-            <span><a href="https://scholar.google.com/citations?user=vwIRwDUAAAAJ&hl=en">Google Scholar</a></span> 
-            </p><p>
-          </p></div>
-          <div class="text topic">
+              We aim to build holistic scene understanding systems that jointly reason about objects,
+              layouts, occlusions, semantics, and spatial relations, bridging perception and structured
+              3D understanding in complex environments.
+            </p>
+          </div>
+
+          <div class="card">
+            <img class="card-img" src="assets/physics_modeling.png" alt="Physical-informed Modeling">
+            <h3>Physical-informed Modeling</h3>
             <p>
-            </p><div class="title">Research Interest</div>
+              We explore how physical principles can be integrated into visual modeling and generation,
+              enabling scene representations that are not only geometrically plausible, but also
+              predictive, controllable, and consistent with real-world dynamics.
+            </p>
+          </div>
+
+          <div class="card">
+            <img class="card-img" src="assets/robot_perception.png" alt="Robot Perception and Planning">
+            <h3>Robot Perception and Planning</h3>
+            <p>
+              We investigate embodied perception systems for localization, mapping, and motion planning,
+              with the goal of connecting 3D scene representations to robust decision-making and
+              interaction in real environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <h2 class="section-title">Selected Publications</h2>
+        <p class="section-desc">
+          Representative publications organized by research directions.
+        </p>
+
+        <div class="pub-group">
+          <h3 class="pub-group-title">3D Reconstruction</h3>
+          <div class="pub-list">
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/25cvpr_free360.jpg" alt="Free360 thumbnail">
+              <div>
+                <h3 class="pub-title">Free360: Layered Gaussian Splatting for Unbounded 360-Degree View Synthesis from Extremely Sparse and Unposed Views</h3>
+                <p class="pub-authors">Chong Bao, Xiyu Zhang, Zehao Yu, Jiale Shi, Guofeng Zhang, Songyou Peng, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">CVPR 2025</p>
+                <p class="pub-desc">
+                  A layered Gaussian splatting framework for sparse, unposed, and unbounded 360-degree scene reconstruction and view synthesis.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/free360/">Project</a>
+                  <a href="https://arxiv.org/abs/2503.24382">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/25tpami_neumesh.jpg" alt="NeuMesh++ thumbnail">
+              <div>
+                <h3 class="pub-title">NeuMesh++: Towards Versatile and Efficient Volumetric Editing with Disentangled Neural Mesh-based Implicit Field</h3>
+                <p class="pub-authors">Chong Bao, Yuan Li, Bangbang Yang, Yujun Shen, Hujun Bao, <strong>Zhaopeng Cui</strong>, Yinda Zhang, Guofeng Zhang</p>
+                <p class="pub-meta">TPAMI 2025</p>
+                <p class="pub-desc">
+                  An extended neural mesh-based implicit representation for more versatile and efficient volumetric editing.
+                </p>
+                <div class="pub-links">
+                  <a href="https://https://zju3dv.github.io/neumesh/">Project</a>
+                  <a href="https://ieeexplore.ieee.org/document/11130391">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/21iccv_objectnerf.png" alt="Object-NeRF thumbnail">
+              <div>
+                <h3 class="pub-title">Learning Object-Compositional Neural Radiance Field for Editable Scene Rendering</h3>
+                <p class="pub-authors">Bangbang Yang, Yinda Zhang, Yinghao Xu, Yijin Li, Han Zhou, Hujun Bao, Guofeng Zhang, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">ICCV 2021</p>
+                <p class="pub-desc">
+                  An object-compositional NeRF framework that supports editable scene rendering with disentangled object-level control.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/object_nerf/">Project</a>
+                  <a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/15iccv.png" alt="Global SfM thumbnail">
+              <div>
+                <h3 class="pub-title">Global Structure-from-Motion by Similarity Averaging</h3>
+                <p class="pub-authors"><strong>Zhaopeng Cui</strong>, Ping Tan</p>
+                <p class="pub-meta">ICCV 2015</p>
+                <p class="pub-desc">
+                  A global structure-from-motion method based on similarity averaging for robust and scalable camera pose estimation.
+                </p>
+                <div class="pub-links">
+                  <a href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Paper</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pub-group">
+          <h3 class="pub-group-title">3D Scene Understanding</h3>
+          <div class="pub-list">
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/25iccv_instascene.png" alt="InstaScene thumbnail">
+              <div>
+                <h3 class="pub-title">InstaScene: Towards Complete 3D Instance Decomposition and Reconstruction from Cluttered Scenes</h3>
+                <p class="pub-authors">Zesong Yang, Bangbang Yang, Wenqi Dong, Chenxuan Cao, Liyuan Cui, Yuewen Ma, <strong>Zhaopeng Cui</strong>, Hujun Bao</p>
+                <p class="pub-meta">ICCV 2025</p>
+                <p class="pub-desc">
+                  A framework for decomposing cluttered scenes into complete instances while reconstructing intact object geometry and appearance.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/instascene/">Project</a>
+                  <a href="https://arxiv.org/abs/2507.08416">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/22SIG_nrroom.jpg" alt="Neural Rendering in a Room thumbnail">
+              <div>
+                <h3 class="pub-title">Neural Rendering in a Room: Amodal 3D Understanding and Free-Viewpoint Rendering for the Closed Scene Composed of Pre-Captured Objects</h3>
+                <p class="pub-authors">Bangbang Yang, Yinda Zhang, Yijin Li, <strong>Zhaopeng Cui</strong>, Sean Fanello, Hujun Bao, Guofeng Zhang</p>
+                <p class="pub-meta">SIGGRAPH 2022</p>
+                <p class="pub-desc">
+                  A room-scale amodal 3D understanding and rendering framework for closed scenes composed of pre-captured objects.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/nr_in_a_room/">Project</a>
+                  <a href="https://arxiv.org/abs/2205.02714">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/21iccv_deeppanocontext.png" alt="DeepPanoContext thumbnail">
+              <div>
+                <h3 class="pub-title">DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization</h3>
+                <p class="pub-authors">Cheng Zhang, <strong>Zhaopeng Cui</strong>, Cai Chen, Shuaicheng Liu, Bing Zeng, Hujun Bao, Yinda Zhang</p>
+                <p class="pub-meta">ICCV 2021</p>
+                <p class="pub-desc">
+                  A panoramic scene understanding framework with holistic context graph modeling and relation-based optimization.
+                </p>
+                <div class="pub-links">
+                  <a href="https://chengzhag.github.io/publication/dpc/">Project</a>
+                  <a href="https://arxiv.org/pdf/2108.10743.pdf">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/21cvpr_scene.png" alt="Holistic 3D scene understanding thumbnail">
+              <div>
+                <h3 class="pub-title">Holistic 3D Scene Understanding from a Single Image with Implicit Representation</h3>
+                <p class="pub-authors">Cheng Zhang, <strong>Zhaopeng Cui</strong>, Yinda Zhang, Bing Zeng, Marc Pollefeys, Shuaicheng Liu</p>
+                <p class="pub-meta">CVPR 2021</p>
+                <p class="pub-desc">
+                  A single-image 3D scene understanding framework based on implicit representation for holistic geometric reasoning.
+                </p>
+                <div class="pub-links">
+                  <a href="https://chengzhag.github.io/publication/im3d/">Project</a>
+                  <a href="https://arxiv.org/pdf/2103.06422.pdf">Paper</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pub-group">
+          <h3 class="pub-group-title">Physical-informed Modeling</h3>
+          <div class="pub-list">
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/26iclr_diffwind.png" alt="DiffWind thumbnail">
+              <div>
+                <h3 class="pub-title">DiffWind: Physics-Informed Differentiable Modeling of Wind-Driven Object Dynamics</h3>
+                <p class="pub-authors">Yuanhang Lei, Boming Zhao, Zesong Yang, Xingxuan Li, Tao Cheng, Haocheng Peng, Ru Zhang, Yang Yang, Siyuan Huang, Yujun Shen, Ruizhen Hu, Hujun Bao, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">ICLR 2026</p>
+                <p class="pub-desc">
+                  A differentiable framework for modeling wind-object interaction from video with physics-informed simulation and reconstruction.
+                </p>
+                <div class="pub-links">
+                  <a href="https://github.com/zju3dv/DiffWind/">Project</a>
+                  <a href="https://arxiv.org/abs/2603.09668">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/26cvpr_physskin.png" alt="PhysSkin thumbnail">
+              <div>
+                <h3 class="pub-title">PhysSkin: Real-Time and Generalizable Physics-Based Animation via Self-Supervised Neural Skinning</h3>
+                <p class="pub-authors">Yuanhang Lei, Tao Cheng, Xingxuan Li, Boming Zhao, Siyuan Huang, Ruizhen Hu, Peter Yichen Chen, Hujun Bao, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">CVPR 2026</p>
+                <p class="pub-desc">
+                  A physics-informed self-supervised neural skinning framework for real-time and generalizable physics-based animation.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/PhysSkin/">Project</a>
+                  <a href="https://arxiv.org/abs/2603.23194">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/24sig_gaussianprediction.JPG" alt="GaussianPrediction thumbnail">
+              <div>
+                <h3 class="pub-title">GaussianPrediction: Dynamic 3D Gaussian Prediction for Motion Extrapolation and Free View Synthesis</h3>
+                <p class="pub-authors">Boming Zhao, Yuan Li, Ziyu Sun, Lin Zeng, Yujun Shen, Rui Ma, Yinda Zhang, Hujun Bao, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">SIGGRAPH 2024</p>
+                <p class="pub-desc">
+                  A dynamic 3D Gaussian framework for future motion extrapolation and free-view synthesis in dynamic scenes.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/gaussian-prediction/">Project</a>
+                  <a href="https://arxiv.org/abs/2405.19745">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/2023tpami_reflection.jpg" alt="Physics-guided reflection separation thumbnail">
+              <div>
+                <h3 class="pub-title">Physics-Guided Reflection Separation From a Pair of Unpolarized and Polarized Images</h3>
+                <p class="pub-authors">Youwei Lyu, <strong>Zhaopeng Cui</strong>, Si Li, Marc Pollefeys, Boxin Shi</p>
+                <p class="pub-meta">TPAMI 2023</p>
+                <p class="pub-desc">
+                  A physics-guided method for separating reflection using polarization cues from paired unpolarized and polarized images.
+                </p>
+                <div class="pub-links">
+                  <a href="https://ieeexplore.ieee.org/document/9743745">Paper</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="pub-group">
+          <h3 class="pub-group-title">Robot Perception and Planning</h3>
+          <div class="pub-list">
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/22cvpr_niceslam.png" alt="NICE-SLAM thumbnail">
+              <div>
+                <h3 class="pub-title">NICE-SLAM: Neural Implicit Scalable Encoding for SLAM</h3>
+                <p class="pub-authors">Zihan Zhu, Songyou Peng, Viktor Larsson, Weiwei Xu, Hujun Bao, <strong>Zhaopeng Cui</strong>, Martin R. Oswald, Marc Pollefeys</p>
+                <p class="pub-meta">CVPR 2022</p>
+                <p class="pub-desc">
+                  A representative neural implicit SLAM framework for joint localization, mapping, and rendering.
+                </p>
+                <div class="pub-links">
+                  <a href="https://pengsongyou.github.io/nice-slam">Project</a>
+                  <a href="https://arxiv.org/abs/2112.12130">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/24siga_pcplanner.jpg" alt="PC-Planner thumbnail">
+              <div>
+                <h3 class="pub-title">PC-Planner: Physics-Constrained Self-Supervised Learning for Robust Neural Motion Planning with Shape-Aware Distance Function</h3>
+                <p class="pub-authors">Xujie Shen, Haocheng Peng, Zesong Yang, Juzhan Xu, Hujun Bao, Ruizhen Hu, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">SIGGRAPH Asia 2024</p>
+                <p class="pub-desc">
+                  A physics-constrained neural motion planning method with shape-aware distance fields for robust planning in complex environments.
+                </p>
+                <div class="pub-links">
+                  <a href="https://arxiv.org/abs/2410.12805">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/25iros_dwvio.JPG" alt="DW-VIO thumbnail">
+              <div>
+                <h3 class="pub-title">DW-VIO: Deep Weighted Visual-Inertial Odometry</h3>
+                <p class="pub-authors">Guyuan Chen, Xiyue Guo, Xiaokun Pan, Yujun Shen, Guofeng Zhang, Hujun Bao, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">IROS 2025</p>
+                <p class="pub-desc">
+                  A deep visual-inertial odometry framework with learned weighting for robust state estimation.
+                </p>
+                <div class="pub-links">
+                  <a href="https://ieeexplore.ieee.org/document/11246552">Paper</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="pub">
+              <img class="pub-thumb" src="assets/23nips_cpslam.jpg" alt="CP-SLAM thumbnail">
+              <div>
+                <h3 class="pub-title">CP-SLAM: Collaborative Neural Point-based SLAM System</h3>
+                <p class="pub-authors">Jiarui Hu, Mao Mao, Hujun Bao, Guofeng Zhang, <strong>Zhaopeng Cui</strong></p>
+                <p class="pub-meta">NeurIPS 2023</p>
+                <p class="pub-desc">
+                  A collaborative neural point-based SLAM framework supporting multi-agent mapping and global refinement.
+                </p>
+                <div class="pub-links">
+                  <a href="https://zju3dv.github.io/cp-slam/">Project</a>
+                  <a href="https://arxiv.org/abs/2311.08013">Paper</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div style="margin-top:30px;">
+          <a class="btn" href="publications.html">Full Publication List</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <h2 class="section-title">News</h2>
+        <p class="section-desc">
+          Recent updates on papers, awards, service, and activities.
+        </p>
+
+        <div class="news">
+          <div class="news-item">
+            <div class="news-date">2026.03</div>
+            <div>Will be serving as Program Chair for 3DV 2028.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2026.02</div>
+            <div>Three papers accepted to CVPR 2026.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2026.01</div>
+            <div>One paper accepted to ICLR 2026.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2025.07</div>
+            <div>Five papers accepted to ICCV 2025.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2024.03</div>
+            <div>NICER-SLAM received the 3DV 2024 Best Paper Award Honorable Mention.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service">
+      <div class="container">
+        <h2 class="section-title">Awards, Service &amp; Academic Activities</h2>
+        <div class="two-col">
+          <div class="panel">
+            <h3>Selected Awards</h3>
             <ul>
-              <li><a href="https://zhpcui.github.io/#sfm" onclick="showPubs(2)">Structure-from-Motion</a></li>
-              <li><a href="https://zhpcui.github.io/#mvs" onclick="showPubs(2)">Multi-View Stereo</a></li>
-              <li><a href="https://zhpcui.github.io/#slam" onclick="showPubs(2)">SLAM</a></li>
-              <li><a href="https://zhpcui.github.io/#dl" onclick="showPubs(2)">3D Deep Learning</a></li>
-              <li><a href="https://zhpcui.github.io/#vip" onclick="showPubs(2)">Video and Image Processing</a></li>
+              <li>3DV 2024 Best Paper Award Honorable Mention</li>
+              <li>IROS 2021 Best Paper Award Finalist on Safety, Security, and Rescue Robotics in memory of Motohiro Kisoi</li>
+              <li>ICRA 2020 Best Paper Award Finalist on Robot Vision</li>
             </ul>
-            <p>
-          </p></div>
-          <div class="text">
-            <p>I am a Research Professor in the <a href="http://www.cs.zju.edu.cn/">College of Computer Science</a> at <a href="https://www.zju.edu.cn/">Zhejiang University</a>, 
-            affiliated with the <a href="http://www.cad.zju.edu.cn/">State Key Laboratory of CAD&CG </a>. My research interests include computer vision, computer graphics, robotics, and machine learning.</p>
-            
-            <p>Before joining Zhejiang Univeristy, I was  a senior researcher working with<a href="https://www.inf.ethz.ch/personal/marc.pollefeys/"> Prof. Marc Pollefeys</a> in the <a href="https://cvg.ethz.ch/"> Computer Vision and Geometry Group</a> at <a href="https://www.ethz.ch/en.html"> ETH Zurich</a>. I received my Ph.D. degree in computer science under the supervision of <a href="http://www.cs.sfu.ca/~pingtan/"> Prof. Ping Tan</a> at <a href="http://www.sfu.ca/">Simon Fraser University</a>. Before that, I was a Ph.D. candidate supervised by Prof. Ping Tan at <a href="http://www.nus.edu.sg/">National University of Singapore.</a> I obtained my Bachelor degree and Master degree at <a href="https://en.xidian.edu.cn/">Xidian University</a> in 2009 and 2012 respectively. </p> 
           </div>
-        </div>
 
-        <div class="content" style="z-index:1;position:relative">
-          <div class="text">
-            <h3 style="margin-bottom:.5em">News</h3>
-            <ul style="padding-bottom:1em">
-				<li>2025.06&nbsp; Five papers accepted to ICCV 2025; one paper accepted to IROS 2025; </li>
-				<li>2025.02&nbsp; Two papers accepted to CVPR 2025; </li>
-				<li>2024.07&nbsp; Two papers accepted to ECCV 2024; </li>
-				<li>2024.04&nbsp; Two papers accepted to SIGGRAPH 2024; </li>
-				<li>2024.03 &nbsp; Our NICER-SLAM accepted to 3DV 2024 and awarded as "Best Paper Award Honorable Mention"</li>
-				<li>2024.02 &nbsp; Two papers accepted to CVPR 2024; One paper accepted to VR 2024; One paper accepted to AAAI 2024</li>
-				<li>2023.07 &nbsp; Four papers accepted to ICCV 2023</li>
-				<li>2023.03 &nbsp; Three papers accepted to CVPR 2023</li>
-				<li>2022.07 &nbsp; Three papers accepted to ECCV 2022</li>
-				<li>2022.06 &nbsp; One paper accepted to ACM MM 2022</li>
-				<li>2022.05 &nbsp; One paper accepted to SIGGRAPH 2022 (ToG)</li>				
-				<li>2022.03 &nbsp; Two papers accepted to TPAMI</li>
-				<li>2022.03 &nbsp; Three Papers accepted to CVPR 2022</li>
-				<li>2022.02 &nbsp; Two Papers accepted to IROS 2022</li>
-			    <li>2021.10 &nbsp; One paper from CVG and ZJU3DV accepted to 3DV 2021 as an oral paper</li>
-				<li>2021.10 &nbsp; One paper from ZJU3DV accepted to IROS 2021 and awarded as "Best Paper Award on Safety, Security, and Rescue Robotics in memory of Motohiro Kisoi Finalist"</li>
-				<li>2021.08 &nbsp; Two papers from ZJU3DV and six papers with collaborators accepted to ICCV2021</li>
-				<li>2021.04 &nbsp; Two papers accepted to TIP</li>
-				<li>2021.02 &nbsp; Three papers accepted to CVPR 2021</li>
-				<li>2020.02 &nbsp; Five papers accepted to CVPR 2020</li>
-				<li>2020.01 &nbsp; One paper accepted to ICRA 2020</li>
-				<!--
-				<li>2019.09 &nbsp; One paper accepted to NeurIPS 2019</li>
-				<li>2019.07 &nbsp; One paper accepted to ICCV 2019</li>
-				<li>2019.03 &nbsp; One paper accepted to CVPR 2019</li>
-				<li>2019.01 &nbsp; Three papers accepted to ICRA 2019</li>
-				-->
+          <div class="panel">
+            <h3>Professional Service</h3>
+            <ul>
+              <li>Associate Editor for Pattern Recognition, IEEE RA-L</li>
+              <li>Area Chair for CVPR, ECCV, IJCAI, 3DV</li>
+              <li>Associate Editor for ICRA, IROS</li>
             </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="content anchor" id="publications">
-          <div class="text" style="z-index:1;position:relative">
-            <h3 style="margin-bottom:0em">
-              Publications 
-                (<a href="https://zhpcui.github.io/" id="select0" onclick="showPubs(0); return false;" style="text-decoration: underline; color: rgb(0, 0, 0);">Show selected</a> / 
-                <a href="https://zhpcui.github.io/" id="select1" onclick="showPubs(1); return false;" style="">Show all by date</a> / 
-                <a href="https://jiajunwu.com/" id="select2" onclick="showPubs(2); return false;" style="">Show all by topic</a>)
-            </h3>
-			<span class="tag">(* indicates equal contribution, and &#8224 indicates corresponding authors.)</span>
-          </div>
-          
-          <div id="pubs">
-            
-            <div class="text anchor">&nbsp;</div>
+    <section id="openings">
+      <div class="container">
+        <h2 class="section-title">Openings</h2>
+        <div class="highlight-box">
+          <p>
+            I am always looking for highly motivated <strong>Ph.D. students</strong>, <strong>research interns</strong>, and <strong>visiting students</strong> interested in 3D vision, embodied AI, scene understanding, SLAM, and physics-informed scene modeling. Please email me with your CV, transcript, and a short description of your research interests.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-          </div>
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        © 2026 Zhaopeng Cui
+      </div>
+      <div>
+        Room 502, Mengminwei Building, Zijingang Campus, Zhejiang University · Hangzhou, China<br>
+        Tel: +86 571 88206681
+      </div>
+    </div>
+  </footer>
 
-          <script id="pubs_selected" language="text">
-            
-            <div class="text anchor">&nbsp;</div>
-			
-			<div class="publication">
-			  <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/24vr_dreamspace.png" alt="teaser_24vr_dreamspace"></div>
-			  <div class="text">
-				<div class="title"><a name="24vr_dreamspace" href="https://arxiv.org/pdf/2310.13119.pdf">Dreamspace: Dreaming your room space with text-driven panoramic texture propagation</a></div>
-				<div class="authors">
-				  Bangbang Yang, Wenqi Dong, Lin Ma, Wenbo Hu, Xiao Liu, Zhaopeng Cui, Yuewen Ma&#8224
-				</div>
-				<div>
-				  <span class="venue">VR 2024</span> /
-				  <span class="tag"><a href="https://arxiv.org/pdf/2310.13119.pdf">Paper</a></span> /
-				  <span class="tag"><a href="https://ybbbbt.com/publication/dreamspace/">Project Page</a></span>
-				</div>
-			  </div>
-			</div>
-			
-			<div class="publication">
-			  <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/24_3dv_nicerslam.png" alt="teaser_24_3dv_nicerslam"></div>
-			  <div class="text">
-				<div class="title"><a name="24_3dv_nicerslam" href="https://arxiv.org/pdf/2302.03594.pdf">Nicer-SLAM: Neural Implicit Scene Encoding for RGB SLAM</a></div>
-				<div class="authors">
-				  Zihan Zhu*, Songyou Peng*, Viktor Larsson, Zhaopeng Cui, Martin R Oswald, Andreas Geiger, Marc Pollefeys
-				</div>
-				<div>
-				  <span class="venue">3DV 2024</span> /
-				  <span class="tag"><a href="https://arxiv.org/pdf/2302.03594.pdf">Paper</a></span> /
-				  <span class="tag"><a href="https://nicer-slam.github.io/">Project Page</a></span>
-				</div>
-			  </div>
-			</div>
-		
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/23cvpr_sine.png" alt="teaser_23cvpr_sine"></div>
-              <div class="text">
-                <div class="title"><a name="23cvpr_sine" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">SINE: Semantic-driven Image-based NeRF Editing with Prior-guided Editing Field</a></div> 
-                <div class="authors">
-                  Chong Bao*, Yinda Zhang*, Bangbang Yang*, Tianxing Fan, Zesong Yang, Hujun Bao, Guofeng Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2023</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/sine/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_neumesh.jpg" alt="teaser_22eccv_neumesh"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_neumesh" href="https://arxiv.org/pdf/2207.11911">NeuMesh: Learning disentangled neural mesh-based implicit field for geometry and texture editing</a></div> 
-                <div class="authors">
-                  Bangbang Yang*, Chong Bao*, Junyi Zeng, Huijun Bao, Yinda Zhang, <strong>Zhaopeng Cui</strong>&#8224, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2207.11911">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/neumesh/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22SIG_nrroom.jpg" alt="teaser_22SIG_nrroom"></div>
-              <div class="text">
-                <div class="title"><a name="22SIG_nrroom" href="https://arxiv.org/abs/2205.02714">Neural Rendering in a Room: Amodal 3D Understanding and Free-Viewpoint Rendering for the Closed Scene Composed of Pre-Captured Objects</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yijin Li,  <strong>Zhaopeng Cui</strong>&#8224, Sean Fanello, Hujun Bao, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2205.02714">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/nr_in_a_room/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_niceslam.png" alt="teaser_22cvpr_niceslam"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_niceslam" href="https://arxiv.org/abs/2112.12130">NICE-SLAM: Neural Implicit Scalable Encoding for SLAM</a></div> 
-                <div class="authors">
-                  Zihan Zhu, Songyou Peng, Viktor Larsson,  Weiwei Xu, Hujun Bao, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2112.12130">Paper</a></span> / 
-                  <span class="tag"><a href="https://pengsongyou.github.io/nice-slam">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21iccv_objectnerf.png" alt="teaser_21iccv_objectnerf"></div>
-              <div class="text">
-                <div class="title"><a name="21iccv_objectnerf" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Learning Object-Compositional Neural Radiance Field for Editable Scene Rendering</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yinghao Xu, Yijin Li, Han Zhou, Hujun Bao, Guofeng Zhang, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/object_nerf/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_deeppanocontext.png" alt="teaser_21cvpr_deeppanocontext"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_deeppanocontext" href="https://arxiv.org/pdf/2108.10743.pdf">DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization</a></div> 
-                <div class="authors">
-                  Cheng Zhang, <strong>Zhaopeng Cui</strong>&#8224, Cai Chen, Shuaicheng Liu&#8224, Bing Zeng, Hujun Bao, and Yinda Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2108.10743.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/dpc/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_scene.png" alt="teaser_21cvpr_scene"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_scene" href="https://arxiv.org/pdf/2103.06422.pdf">Holistic 3D Scene Understanding from a Single Image with Implicit Representation</a></div> 
-                <div class="authors">
-                  Cheng Zhang*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Bing Zeng, Marc Pollefeys, and Shuaicheng Liu&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2103.06422.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/im3d/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_face.png" alt="teaser_21cvpr_face"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_face" href="https://arxiv.org/pdf/2104.03493.pdf">Riggable 3D Face Reconstruction via In-Network Optimization</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>&#8224, Xiaoming Liu, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2104.03493.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_rotation_averaging.png" alt="teaser_21cvpr_rotation_averaging"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_rotation_averaging" href="">End-to-End Rotation Averaging with Multi-Source Propagation</a></div> 
-                <div class="authors">
-                  Luwei Yang, Heng Li, Jamal Ahmed Rahim, <strong>Zhaopeng Cui</strong>&#8224, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20tip_hand_shape.png" alt="teaser_20tip_hand_shape"></div>
-              <div class="text">
-                <div class="title"><a name="20tip_hand_shape" href="https://ieeexplore.ieee.org/abstract/document/9262071/">Weakly Supervised Learning for Single Depth-Based Hand Shape Recovery</a></div> 
-                <div class="authors">
-                  Xiaoming Deng&#8224, Yuying Zhu, Yinda Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224, Ping Tan, Wentian Qu, Cuixia Ma, and Hongan Wang. 
-                </div>
-				<div>
-                  <span class="venue">IEEE Transactions on Image Processing, 2020</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/abstract/document/9262071/">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-                    
-            <div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_dist.PNG" alt="teaser_dist"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_dist" href="https://arxiv.org/pdf/1911.13225.pdf">DIST: Rendering Deep Implicit Signed Distance Function with Differentiable Sphere Tracing</a></div> 
-                <div class="authors">
-                  Shaohui Liu, Yinda Zhang, Songyou Peng, Boxin Shi, Marc Pollefeys, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1911.13225.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://b1ueber2y.me/projects/DIST-Renderer/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_human_depth.PNG" alt="teaser_20cvpr_human_depth"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_human_depth" href="https://arxiv.org/pdf/2005.03358.pdf">Self-Supervised Human Depth Estimation from Monocular Videos</a></div> 
-                <div class="authors">
-                  Feitong Tan*, Hao Zhu*, <strong>Zhaopeng Cui</strong>, Siyu Zhu, Marc Pollefeys, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2005.03358.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/sfu-gruvi-3dv/Self-Supervised-Human-Depth">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_nrsfm.PNG" alt="teaser_20cvpr_nrsfm"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_nrsfm" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Deep Facial Non-Rigid Multi-View Stereo</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>, Jamal Ahmed Rahim, Xiaoming Liu, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/zqbai-jeremy/DFNRMVS">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_satellite.PNG" alt="teaser_20cvpr_satellite"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_satellite" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Geometry-Aware Satellite-to-Ground Image Synthesis for Urban Areas</a></div> 
-                <div class="authors">
-                  Xiaohu Lu*, Zuoyue Li*, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, Marc Pollefeys, and Rongjun Qin&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/lizuoyue/sate_to_ground">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_deep_shutter.PNG" alt="teaser_20cvpr_deep_shutter"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_deep_shutter" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Deep Shutter Unrolling Network</a></div> 
-                <div class="authors">
-                  Peidong Liu, <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/ethliup/DeepUnrollNet">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20icra.PNG" alt="teaser_20icra"></div>
-              <div class="text">
-                <div class="title"><a name="20icra" href="https://arxiv.org/pdf/2003.08056.pdf">OmniSLAM: Omnidirectional Localization and Dense Mapping for Wide-baseline Multi-camera Systems</a></div> 
-                <div class="authors">
-                  Changhee Won*, Hochang Seok*, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Jongwoo Lim&#8224.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2003.08056.pdf">Paper</a> (<strong>Best Paper Award in Robot Vision Finalist</strong>)</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19nips.png" alt="teaser_19nips"></div>
-              <div class="text">
-                <div class="title"><a name="19nips" href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Reflection Separation using a Pair of Unpolarized and Polarized Images</a></div> 
-                <div class="authors">
-                  Youwei Lyu*, <strong>Zhaopeng Cui*</strong>, Si Li, Marc Pollefeys, and Boxin Shi.
-                </div>
-				<div>
-                  <span class="venue">NeurIPS 2019</span> /
-                  <span class="tag"><a href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/YouweiLyu/reflection_separation_with_un-polarized_images">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19polarimetric_pose.png" alt="teaser_19polarimetric_pose"></div>
-              <div class="text">
-                <div class="title"><a name="19polarimetric_pose" href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Polarimetric Relative Pose Estimation</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2019</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19cvpr_deeplidar.png" alt="teaser_19cvpr_deeplidar"></div>
-              <div class="text">
-                <div class="title"><a name="19cvpr_deeplidar" href="https://arxiv.org/pdf/1812.00488.pdf">DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image</a></div> 
-                <div class="authors">
-                  Jiaxiong Qiu*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Xingdi Zhang, Shuaicheng Liu&#8224, Bing Zeng, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1812.00488.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/JiaxiongQ/DeepLiDAR">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_densemapping.png" alt="teaser_19icra_densemapping"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_densemapping" href="https://arxiv.org/pdf/1809.06132.pdf">Real-Time Dense Mapping for Self-Driving Vehicles using Fisheye Cameras</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Lionel Heng, Ye Chuan Yeo, Andreas Geiger, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06132.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/arxiv18_densemapping">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_autovision.png" alt="teaser_19icra_autovision"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_autovision" href="https://arxiv.org/pdf/1809.05477.pdf">Project AutoVision: Localization and 3D Scene Perception for an Autonomous Vehicle with a Multi-Camera System</a></div> 
-                <div class="authors">
-                  Lionel Heng, Benjamin Choi, <strong>Zhaopeng Cui</strong>, Marcel Geppert, Sixing Hu, Benson Kuan, Peidong Liu, Rang Nguyen, Ye Chuan Yeo, Andreas Geiger, Gim Hee Lee, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.05477.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_localization.png" alt="teaser_19icra_localization"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_localization" href="https://arxiv.org/pdf/1809.06445.pdf">Efficient 2D-3D Matching for Multi-Camera Visual Localization</a></div> 
-                <div class="authors">
-                  Marcel Geppert, Peidong Liu, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06445.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/18cvpr_pdms.jpg" alt="teaser_18cvpr_pdms"></div>
-              <div class="text">
-                <div class="title"><a name="18cvpr_pdms" href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Polarimetric Dense Monocular SLAM</a></div> 
-                <div class="authors">
-                  Luwei Yang*, Feitong Tan*, Ao Li, <strong>Zhaopeng Cui</strong>, Yasutaka Furukawa, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2018</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17sig.jpg" alt="teaser_17sig"></div>
-              <div class="text">
-                <div class="title"><a name="17sig" href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Time Slice Video Synthesis by Robust Video Alignment</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Oliver Wang, Ping Tan, and Jue Wang.
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2017</span> /
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://gruvi.cs.sfu.ca/project/timeslice/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17cvpr.png" alt="teaser_17cvpr"></div>
-              <div class="text">
-                <div class="title"><a name="17cvpr" href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Polarimetric Multi-View Stereo</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Jinwei Gu, Boxin Shi, Ping Tan, and Jan Kautz.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2017</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/polarstereo/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15iccv.png" alt="teaser_15iccv"></div>
-              <div class="text">
-                <div class="title"><a name="15iccv" href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Global Structure-from-Motion by Similarity Averaging</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong> and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2015</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2015_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15bmvc.png" alt="teaser_15bmvc"></div>
-              <div class="text">
-                <div class="title"><a name="15bmvc" href="http://arxiv.org/pdf/1503.01832v2.pdf">Linear Global Translation Estimation with Feature Tracks</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Nianjuan Jiang, Chengzhou Tang, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">BMVC 2015</span> /
-                  <span class="tag"><a href="http://arxiv.org/pdf/1503.01832v2.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/13iccv_sfm.png" alt="teaser_13iccv_sfm"></div>
-              <div class="text">
-                <div class="title"><a name="13iccv_sfm" href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">A Global Linear Method for Camera Pose Registration</a></div> 
-                <div class="authors">
-                  Nianjuan Jiang*, <strong>Zhaopeng Cui</strong>* and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2013</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2013_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-
-          </script>
-		  
-		  
-          <script id="pubs_by_date" language="text">
-            
-            <div class="text anchor">&nbsp;</div>
-			
-			<div class="publication">
-			  <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/24_3dv_nicerslam.png" alt="teaser_24_3dv_nicerslam"></div>
-			  <div class="text">
-				<div class="title"><a name="24_3dv_nicerslam" href="https://arxiv.org/pdf/2302.03594.pdf">Nicer-SLAM: Neural Implicit Scene Encoding for RGB SLAM</a></div>
-				<div class="authors">
-				  Zihan Zhu*, Songyou Peng*, Viktor Larsson, Zhaopeng Cui, Martin R Oswald, Andreas Geiger, Marc Pollefeys
-				</div>
-				<div>
-				  <span class="venue">3DV 2024</span> /
-				  <span class="tag"><a href="https://arxiv.org/pdf/2302.03594.pdf">Paper</a></span> /
-				  <span class="tag"><a href="https://nicer-slam.github.io/">Project Page</a></span>
-				</div>
-			  </div>
-			</div>
-			
-			<div class="publication">
-			  <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/24vr_dreamspace.png" alt="teaser_24vr_dreamspace"></div>
-			  <div class="text">
-				<div class="title"><a name="24vr_dreamspace" href="https://arxiv.org/pdf/2310.13119.pdf">Dreamspace: Dreaming your room space with text-driven panoramic texture propagation</a></div>
-				<div class="authors">
-				  Bangbang Yang, Wenqi Dong, Lin Ma, Wenbo Hu, Xiao Liu, Zhaopeng Cui, Yuewen Ma&#8224
-				</div>
-				<div>
-				  <span class="venue">VR 2024</span> /
-				  <span class="tag"><a href="https://arxiv.org/pdf/2310.13119.pdf">Paper</a></span> /
-				  <span class="tag"><a href="https://ybbbbt.com/publication/dreamspace/">Project Page</a></span>
-				</div>
-			  </div>
-			</div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/23cvpr_sine.png" alt="teaser_23cvpr_sine"></div>
-              <div class="text">
-                <div class="title"><a name="23cvpr_sine" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">SINE: Semantic-driven Image-based NeRF Editing with Prior-guided Editing Field</a></div> 
-                <div class="authors">
-                  Chong Bao*, Yinda Zhang*, Bangbang Yang*, Tianxing Fan, Zesong Yang, Hujun Bao, Guofeng Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2023</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/sine/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_neumesh.jpg" alt="teaser_22eccv_neumesh"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_neumesh" href="https://arxiv.org/pdf/2207.11911">NeuMesh: Learning disentangled neural mesh-based implicit field for geometry and texture editing</a></div> 
-                <div class="authors">
-                  Bangbang Yang*, Chong Bao*, Junyi Zeng, Huijun Bao, Yinda Zhang, <strong>Zhaopeng Cui</strong>&#8224, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2207.11911">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/neumesh/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_compnvs.jpg" alt="teaser_22eccv_compnvs"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_compnvs" href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610441.pdf">CompNVS: Novel View Synthesis with Scene Completion</a></div> 
-                <div class="authors">
-                  Zuoyue Li, Tianxing Fan, Zhenqiang Li, <strong>Zhaopeng Cui</strong>&#8224, Yoichi Sato, Marc Pollefeys, Martin R. Oswald. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610441.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_deltar.jpg" alt="teaser_22eccv_deltar"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_deltar" href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610612.pdf">DELTAR: Depth Estimation from a Light-weight ToF Sensor and RGB Image</a></div> 
-                <div class="authors">
-                  Yijin Li, Xinyang Liu, Wenqi Dong, Han Zhou, Hujun Bao, Guofeng Zhang, yinda Zhang, <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610612.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22SIG_nrroom.jpg" alt="teaser_22SIG_nrroom"></div>
-              <div class="text">
-                <div class="title"><a name="22SIG_nrroom" href="https://arxiv.org/abs/2205.02714">Neural Rendering in a Room: Amodal 3D Understanding and Free-Viewpoint Rendering for the Closed Scene Composed of Pre-Captured Objects</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yijin Li,  <strong>Zhaopeng Cui</strong>&#8224, Sean Fanello, Hujun Bao, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2205.02714">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/nr_in_a_room/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_niceslam.png" alt="teaser_22cvpr_niceslam"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_niceslam" href="https://arxiv.org/abs/2112.12130">NICE-SLAM: Neural Implicit Scalable Encoding for SLAM</a></div> 
-                <div class="authors">
-                  Zihan Zhu, Songyou Peng, Viktor Larsson,  Weiwei Xu, Hujun Bao, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2112.12130">Paper</a></span> / 
-                  <span class="tag"><a href="https://pengsongyou.github.io/nice-slam">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_scenesqueezer.jpg" alt="teaser_22cvpr_scenesqueezer"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_scenesqueezer" href="">SceneSqueezer: Learning to Compress Scene for Camera Relocalization</a></div> 
-                <div class="authors">
-                  Luwei Yang, Rakesh Shrestha, Wenbo Li,  Shuaicheng Liu, Guofeng Zhang, <strong>Zhaopeng Cui</strong>&#8224, Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="">Paper</a></span> / 
-                  <span class="tag"><a href=" ">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_rago.jpg" alt="teaser_22cvpr_rago"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_rago" href="">RAGO: Recurrent Graph Optimizer For Multiple Rotation Averaging</a></div> 
-                <div class="authors">
-                  Heng Li, Shuaicheng Liu, <strong>Zhaopeng Cui</strong>, Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="">Paper</a></span> / 
-                  <span class="tag"><a href=" ">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21iccv_objectnerf.png" alt="teaser_21iccv_objectnerf"></div>
-              <div class="text">
-                <div class="title"><a name="21iccv_objectnerf" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Learning Object-Compositional Neural Radiance Field for Editable Scene Rendering</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yinghao Xu, Yijin Li, Han Zhou, Hujun Bao, Guofeng Zhang, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/object_nerf/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_deeppanocontext.png" alt="teaser_21cvpr_deeppanocontext"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_deeppanocontext" href="https://arxiv.org/pdf/2108.10743.pdf">DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization</a></div> 
-                <div class="authors">
-                  Cheng Zhang, <strong>Zhaopeng Cui</strong>&#8224, Cai Chen, Shuaicheng Liu&#8224, Bing Zeng, Hujun Bao, and Yinda Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2108.10743.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/dpc/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_scene.png" alt="teaser_21cvpr_scene"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_scene" href="https://arxiv.org/pdf/2103.06422.pdf">Holistic 3D Scene Understanding from a Single Image with Implicit Representation</a></div> 
-                <div class="authors">
-                  Cheng Zhang*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Bing Zeng, Marc Pollefeys, and Shuaicheng Liu&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2103.06422.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/im3d/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_face.png" alt="teaser_21cvpr_face"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_face" href="https://arxiv.org/pdf/2104.03493.pdf">Riggable 3D Face Reconstruction via In-Network Optimization</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>&#8224, Xiaoming Liu, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2104.03493.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_rotation_averaging.png" alt="teaser_21cvpr_rotation_averaging"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_rotation_averaging" href="">End-to-End Rotation Averaging with Multi-Source Propagation</a></div> 
-                <div class="authors">
-                  Luwei Yang, Heng Li, Jamal Ahmed Rahim, <strong>Zhaopeng Cui</strong>&#8224, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21tip_hand_pose.png" alt="teaser_21tip_hand_pose"></div>
-              <div class="text">
-                <div class="title"><a name="21tip_hand_pose" href="https://ieeexplore.ieee.org/abstract/document/9398571/">Hand Pose Understanding with Large-Scale Photo-Realistic Rendering Dataset</a></div> 
-                <div class="authors">
-                  Xiaoming Deng*&#8224, Yinda Zhang*, Jian Shi*, Yuying Zhu, Dachuan Cheng, Dexin Zuo, <strong>Zhaopeng Cui</strong>, Ping Tan, Liang Chang, Hongan Wang.
-                </div>
-				<div>
-                  <span class="venue">IEEE Transactions on Image Processing 2021</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/abstract/document/9398571/">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20tip_hand_shape.png" alt="teaser_20tip_hand_shape"></div>
-              <div class="text">
-                <div class="title"><a name="20tip_hand_shape" href="https://ieeexplore.ieee.org/abstract/document/9262071/">Weakly Supervised Learning for Single Depth-Based Hand Shape Recovery</a></div> 
-                <div class="authors">
-                  Xiaoming Deng&#8224, Yuying Zhu, Yinda Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224, Ping Tan, Wentian Qu, Cuixia Ma, and Hongan Wang. 
-                </div>
-				<div>
-                  <span class="venue">IEEE Transactions on Image Processing, 2020</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/abstract/document/9262071/">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-                    
-            <div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_dist.PNG" alt="teaser_dist"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_dist" href="https://arxiv.org/pdf/1911.13225.pdf">DIST: Rendering Deep Implicit Signed Distance Function with Differentiable Sphere Tracing</a></div> 
-                <div class="authors">
-                  Shaohui Liu, Yinda Zhang, Songyou Peng, Boxin Shi, Marc Pollefeys, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1911.13225.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://b1ueber2y.me/projects/DIST-Renderer/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_human_depth.PNG" alt="teaser_20cvpr_human_depth"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_human_depth" href="https://arxiv.org/pdf/2005.03358.pdf">Self-Supervised Human Depth Estimation from Monocular Videos</a></div> 
-                <div class="authors">
-                  Feitong Tan*, Hao Zhu*, <strong>Zhaopeng Cui</strong>, Siyu Zhu, Marc Pollefeys, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2005.03358.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/sfu-gruvi-3dv/Self-Supervised-Human-Depth">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_nrsfm.PNG" alt="teaser_20cvpr_nrsfm"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_nrsfm" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Deep Facial Non-Rigid Multi-View Stereo</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>, Jamal Ahmed Rahim, Xiaoming Liu, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/zqbai-jeremy/DFNRMVS">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_satellite.PNG" alt="teaser_20cvpr_satellite"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_satellite" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Geometry-Aware Satellite-to-Ground Image Synthesis for Urban Areas</a></div> 
-                <div class="authors">
-                  Xiaohu Lu*, Zuoyue Li*, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, Marc Pollefeys, and Rongjun Qin&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/lizuoyue/sate_to_ground">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_deep_shutter.PNG" alt="teaser_20cvpr_deep_shutter"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_deep_shutter" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Deep Shutter Unrolling Network</a></div> 
-                <div class="authors">
-                  Peidong Liu, <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/ethliup/DeepUnrollNet">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20icra.PNG" alt="teaser_20icra"></div>
-              <div class="text">
-                <div class="title"><a name="20icra" href="https://arxiv.org/pdf/2003.08056.pdf">OmniSLAM: Omnidirectional Localization and Dense Mapping for Wide-baseline Multi-camera Systems</a></div> 
-                <div class="authors">
-                  Changhee Won*, Hochang Seok*, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Jongwoo Lim&#8224.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2003.08056.pdf">Paper</a> (<strong>Best Paper Award in Robot Vision Finalist</strong>)</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19nips.png" alt="teaser_19nips"></div>
-              <div class="text">
-                <div class="title"><a name="19nips" href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Reflection Separation using a Pair of Unpolarized and Polarized Images</a></div> 
-                <div class="authors">
-                  Youwei Lyu*, <strong>Zhaopeng Cui*</strong>, Si Li, Marc Pollefeys, and Boxin Shi.
-                </div>
-				<div>
-                  <span class="venue">NeurIPS 2019</span> /
-                  <span class="tag"><a href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/YouweiLyu/reflection_separation_with_un-polarized_images">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19polarimetric_pose.png" alt="teaser_19polarimetric_pose"></div>
-              <div class="text">
-                <div class="title"><a name="19polarimetric_pose" href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Polarimetric Relative Pose Estimation</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2019</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19cvpr_deeplidar.png" alt="teaser_19cvpr_deeplidar"></div>
-              <div class="text">
-                <div class="title"><a name="19cvpr_deeplidar" href="https://arxiv.org/pdf/1812.00488.pdf">DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image</a></div> 
-                <div class="authors">
-                  Jiaxiong Qiu*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Xingdi Zhang, Shuaicheng Liu&#8224, Bing Zeng, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1812.00488.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/JiaxiongQ/DeepLiDAR">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_densemapping.png" alt="teaser_19icra_densemapping"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_densemapping" href="https://arxiv.org/pdf/1809.06132.pdf">Real-Time Dense Mapping for Self-Driving Vehicles using Fisheye Cameras</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Lionel Heng, Ye Chuan Yeo, Andreas Geiger, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06132.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/arxiv18_densemapping">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_autovision.png" alt="teaser_19icra_autovision"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_autovision" href="https://arxiv.org/pdf/1809.05477.pdf">Project AutoVision: Localization and 3D Scene Perception for an Autonomous Vehicle with a Multi-Camera System</a></div> 
-                <div class="authors">
-                  Lionel Heng, Benjamin Choi, <strong>Zhaopeng Cui</strong>, Marcel Geppert, Sixing Hu, Benson Kuan, Peidong Liu, Rang Nguyen, Ye Chuan Yeo, Andreas Geiger, Gim Hee Lee, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.05477.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_localization.png" alt="teaser_19icra_localization"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_localization" href="https://arxiv.org/pdf/1809.06445.pdf">Efficient 2D-3D Matching for Multi-Camera Visual Localization</a></div> 
-                <div class="authors">
-                  Marcel Geppert, Peidong Liu, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06445.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19olt.png" alt="teaser_19olt"></div>
-              <div class="text">
-                <div class="title"><a name="19olt" href="https://www.sciencedirect.com/science/article/abs/pii/S0030399218304833">Photo2Silhouette: Transferring silhouette photo style for images</a></div> 
-                <div class="authors">
-                  Henan Li, Lili Wan&#8224, Shenghui Wang, and <strong>Zhaopeng Cui</strong>.
-                </div>
-				<div>
-                  <span class="venue">Optics & Laser Technology, 2019</span> /
-                  <span class="tag"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0030399218304833">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/18cvpr_pdms.jpg" alt="teaser_18cvpr_pdms"></div>
-              <div class="text">
-                <div class="title"><a name="18cvpr_pdms" href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Polarimetric Dense Monocular SLAM</a></div> 
-                <div class="authors">
-                  Luwei Yang*, Feitong Tan*, Ao Li, <strong>Zhaopeng Cui</strong>, Yasutaka Furukawa, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2018</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17sig.jpg" alt="teaser_17sig"></div>
-              <div class="text">
-                <div class="title"><a name="17sig" href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Time Slice Video Synthesis by Robust Video Alignment</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Oliver Wang, Ping Tan, and Jue Wang.
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2017</span> /
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://gruvi.cs.sfu.ca/project/timeslice/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17cvpr.png" alt="teaser_17cvpr"></div>
-              <div class="text">
-                <div class="title"><a name="17cvpr" href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Polarimetric Multi-View Stereo</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Jinwei Gu, Boxin Shi, Ping Tan, and Jan Kautz.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2017</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/polarstereo/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/16jvcip.png" alt="teaser_jvcip"></div>
-              <div class="text">
-                <div class="title"><a name="jvcip" href="https://www.sciencedirect.com/science/article/abs/pii/S1047320316300839">Homography-based Block Motion Estimation for Video Coding of PTZ Cameras</a></div> 
-                <div class="authors">
-                  Xiaoming Guo, Guang Jiang&#8224, <strong>Zhaopeng Cui</strong>, and Pei Tao.
-                </div>
-				<div>
-                  <span class="venue">Journal of Visual Communication and Image Representation, 2016</span> /
-                  <span class="tag"><a href="https://www.sciencedirect.com/science/article/abs/pii/S1047320316300839">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15iccv.png" alt="teaser_15iccv"></div>
-              <div class="text">
-                <div class="title"><a name="15iccv" href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Global Structure-from-Motion by Similarity Averaging</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong> and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2015</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2015_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15bmvc.png" alt="teaser_15bmvc"></div>
-              <div class="text">
-                <div class="title"><a name="15bmvc" href="http://arxiv.org/pdf/1503.01832v2.pdf">Linear Global Translation Estimation with Feature Tracks</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Nianjuan Jiang, Chengzhou Tang, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">BMVC 2015</span> /
-                  <span class="tag"><a href="http://arxiv.org/pdf/1503.01832v2.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/13iccv_sfm.png" alt="teaser_13iccv_sfm"></div>
-              <div class="text">
-                <div class="title"><a name="13iccv_sfm" href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">A Global Linear Method for Camera Pose Registration</a></div> 
-                <div class="authors">
-                  Nianjuan Jiang*, <strong>Zhaopeng Cui</strong>* and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2013</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2013_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/12spic.png" alt="teaser_12spic"></div>
-              <div class="text">
-                <div class="title"><a name="12spic" href="https://www.sciencedirect.com/science/article/pii/S0923596511001329">A New Fast Motion Estimation Algorithm Based on the Loop-Epipolar Constraint for Multiview Video Coding</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Guang Jiang, Shuai Yang, and Chengke Wu.
-                </div>
-				<div>
-                  <span class="venue">Signal Processing: Image Communication, 2012</span> /
-                  <span class="tag"><a href="https://www.sciencedirect.com/science/article/pii/S0923596511001329">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/11icme.png" alt="teaser_11icme"></div>
-              <div class="text">
-                <div class="title"><a name="11icme" href="https://ieeexplore.ieee.org/document/6011886">A Novel Homography-Based Search Algorithm for Block Motion Estimation in Video Coding</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Guang Jiang, Dujuan Wang, and Chengke Wu.
-                </div>
-				<div>
-                  <span class="venue">ICME, 2011</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/document/6011886">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/09ias.png" alt="teaser_09ias"></div>
-              <div class="text">
-                <div class="title"><a name="09ias" href="https://ieeexplore.ieee.org/document/5283519">Octagonal Search Algorithm with Early Termination for Fast Motion Estimation on H.264</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Dujuan Wang, Guang Jiang, and Chengke Wu.
-                </div>
-				<div>
-                  <span class="venue">IAS, 2009</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/document/5283519">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-
-          </script>		  
-          
-		  
-		  <script id="pubs_by_topic" language="text">
-            
-            <div class="text anchor" id="sfm"><h4>Structure-from-Motion</h4></div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_scenesqueezer.jpg" alt="teaser_22cvpr_scenesqueezer"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_scenesqueezer" href="">SceneSqueezer: Learning to Compress Scene for Camera Relocalization</a></div> 
-                <div class="authors">
-                  Luwei Yang, Rakesh Shrestha, Wenbo Li,  Shuaicheng Liu, Guofeng Zhang, <strong>Zhaopeng Cui</strong>&#8224, Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="">Paper</a></span> / 
-                  <span class="tag"><a href=" ">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_rago.jpg" alt="teaser_22cvpr_rago"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_rago" href="">RAGO: Recurrent Graph Optimizer For Multiple Rotation Averaging</a></div> 
-                <div class="authors">
-                  Heng Li, Shuaicheng Liu, <strong>Zhaopeng Cui</strong>, Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="">Paper</a></span> / 
-                  <span class="tag"><a href=" ">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_rotation_averaging.png" alt="teaser_21cvpr_rotation_averaging"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_rotation_averaging" href="">End-to-End Rotation Averaging with Multi-Source Propagation</a></div> 
-                <div class="authors">
-                  Luwei Yang, Heng Li, Jamal Ahmed Rahim, <strong>Zhaopeng Cui</strong>&#8224, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19polarimetric_pose.png" alt="teaser_19polarimetric_pose"></div>
-              <div class="text">
-                <div class="title"><a name="19polarimetric_pose" href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Polarimetric Relative Pose Estimation</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2019</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Cui_Polarimetric_Relative_Pose_Estimation_ICCV_2019_paper.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15iccv.png" alt="teaser_15iccv"></div>
-              <div class="text">
-                <div class="title"><a name="15iccv" href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Global Structure-from-Motion by Similarity Averaging</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong> and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2015</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2015/papers/Cui_Global_Structure-From-Motion_by_ICCV_2015_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2015_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/15bmvc.png" alt="teaser_15bmvc"></div>
-              <div class="text">
-                <div class="title"><a name="15bmvc" href="http://arxiv.org/pdf/1503.01832v2.pdf">Linear Global Translation Estimation with Feature Tracks</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Nianjuan Jiang, Chengzhou Tang, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">BMVC 2015</span> /
-                  <span class="tag"><a href="http://arxiv.org/pdf/1503.01832v2.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/13iccv_sfm.png" alt="teaser_13iccv_sfm"></div>
-              <div class="text">
-                <div class="title"><a name="13iccv_sfm" href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">A Global Linear Method for Camera Pose Registration</a></div> 
-                <div class="authors">
-                  Nianjuan Jiang*, <strong>Zhaopeng Cui</strong>* and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">ICCV 2013</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_iccv_2013/papers/Jiang_A_Global_Linear_2013_ICCV_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/ICCV2013_SfM/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="text anchor" id="mvs"><h4>Multi-View Stereo</h4></div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_densemapping.png" alt="teaser_19icra_densemapping"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_densemapping" href="https://arxiv.org/pdf/1809.06132.pdf">Real-Time Dense Mapping for Self-Driving Vehicles using Fisheye Cameras</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Lionel Heng, Ye Chuan Yeo, Andreas Geiger, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06132.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/arxiv18_densemapping">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17cvpr.png" alt="teaser_17cvpr"></div>
-              <div class="text">
-                <div class="title"><a name="17cvpr" href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Polarimetric Multi-View Stereo</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Jinwei Gu, Boxin Shi, Ping Tan, and Jan Kautz.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2017</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Cui_Polarimetric_Multi-View_Stereo_CVPR_2017_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/polarstereo/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="text anchor" id="slam"><h4>SLAM</h4></div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22cvpr_niceslam.png" alt="teaser_22cvpr_niceslam"></div>
-              <div class="text">
-                <div class="title"><a name="22cvpr_niceslam" href="https://arxiv.org/abs/2112.12130">NICE-SLAM: Neural Implicit Scalable Encoding for SLAM</a></div> 
-                <div class="authors">
-                  Zihan Zhu, Songyou Peng, Viktor Larsson,  Weiwei Xu, Hujun Bao, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, and Marc Pollefeys. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2112.12130">Paper</a></span> / 
-                  <span class="tag"><a href="https://pengsongyou.github.io/nice-slam">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20icra.PNG" alt="teaser_20icra"></div>
-              <div class="text">
-                <div class="title"><a name="20icra" href="https://arxiv.org/pdf/2003.08056.pdf">OmniSLAM: Omnidirectional Localization and Dense Mapping for Wide-baseline Multi-camera Systems</a></div> 
-                <div class="authors">
-                  Changhee Won*, Hochang Seok*, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Jongwoo Lim&#8224.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2003.08056.pdf">Paper</a> (<strong>Best Paper Award in Robot Vision Finalist</strong>)</span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_autovision.png" alt="teaser_19icra_autovision"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_autovision" href="https://arxiv.org/pdf/1809.05477.pdf">Project AutoVision: Localization and 3D Scene Perception for an Autonomous Vehicle with a Multi-Camera System</a></div> 
-                <div class="authors">
-                  Lionel Heng, Benjamin Choi, <strong>Zhaopeng Cui</strong>, Marcel Geppert, Sixing Hu, Benson Kuan, Peidong Liu, Rang Nguyen, Ye Chuan Yeo, Andreas Geiger, Gim Hee Lee, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.05477.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19icra_localization.png" alt="teaser_19icra_localization"></div>
-              <div class="text">
-                <div class="title"><a name="19icra_localization" href="https://arxiv.org/pdf/1809.06445.pdf">Efficient 2D-3D Matching for Multi-Camera Visual Localization</a></div> 
-                <div class="authors">
-                  Marcel Geppert, Peidong Liu, <strong>Zhaopeng Cui</strong>, Marc Pollefeys, and Torsten Sattler.
-                </div>
-				<div>
-                  <span class="venue">ICRA 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1809.06445.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/18cvpr_pdms.jpg" alt="teaser_18cvpr_pdms"></div>
-              <div class="text">
-                <div class="title"><a name="18cvpr_pdms" href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Polarimetric Dense Monocular SLAM</a></div> 
-                <div class="authors">
-                  Luwei Yang*, Feitong Tan*, Ao Li, <strong>Zhaopeng Cui</strong>, Yasutaka Furukawa, and Ping Tan.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2018</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/2612.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="text anchor" id="dl"><h4>3D Deep Learning</h4></div>
-					
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/23cvpr_sine.png" alt="teaser_23cvpr_sine"></div>
-              <div class="text">
-                <div class="title"><a name="23cvpr_sine" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">SINE: Semantic-driven Image-based NeRF Editing with Prior-guided Editing Field</a></div> 
-                <div class="authors">
-                  Chong Bao*, Yinda Zhang*, Bangbang Yang*, Tianxing Fan, Zesong Yang, Hujun Bao, Guofeng Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2023</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/sine/sine.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/sine/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_neumesh.jpg" alt="teaser_22eccv_neumesh"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_neumesh" href="https://arxiv.org/pdf/2207.11911">NeuMesh: Learning disentangled neural mesh-based implicit field for geometry and texture editing</a></div> 
-                <div class="authors">
-                  Bangbang Yang*, Chong Bao*, Junyi Zeng, Huijun Bao, Yinda Zhang, <strong>Zhaopeng Cui</strong>&#8224, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2207.11911">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/neumesh/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_compnvs.jpg" alt="teaser_22eccv_compnvs"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_compnvs" href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610441.pdf">CompNVS: Novel View Synthesis with Scene Completion</a></div> 
-                <div class="authors">
-                  Zuoyue Li, Tianxing Fan, Zhenqiang Li, <strong>Zhaopeng Cui</strong>&#8224, Yoichi Sato, Marc Pollefeys, Martin R. Oswald. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610441.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22eccv_deltar.jpg" alt="teaser_22eccv_deltar"></div>
-              <div class="text">
-                <div class="title"><a name="22eccv_deltar" href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610612.pdf">DELTAR: Depth Estimation from a Light-weight ToF Sensor and RGB Image</a></div> 
-                <div class="authors">
-                  Yijin Li, Xinyang Liu, Wenqi Dong, Han Zhou, Hujun Bao, Guofeng Zhang, yinda Zhang, <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ECCV 2022</span> /
-                  <span class="tag"><a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136610612.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/22SIG_nrroom.jpg" alt="teaser_22SIG_nrroom"></div>
-              <div class="text">
-                <div class="title"><a name="22SIG_nrroom" href="https://arxiv.org/abs/2205.02714">Neural Rendering in a Room: Amodal 3D Understanding and Free-Viewpoint Rendering for the Closed Scene Composed of Pre-Captured Objects</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yijin Li,  <strong>Zhaopeng Cui</strong>&#8224, Sean Fanello, Hujun Bao, Guofeng Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2022</span> /
-                  <span class="tag"><a href="https://arxiv.org/abs/2205.02714">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/nr_in_a_room/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21iccv_objectnerf.png" alt="teaser_21iccv_objectnerf"></div>
-              <div class="text">
-                <div class="title"><a name="21iccv_objectnerf" href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Learning Object-Compositional Neural Radiance Field for Editable Scene Rendering</a></div> 
-                <div class="authors">
-                  Bangbang Yang, Yinda Zhang, Yinghao Xu, Yijin Li, Han Zhou, Hujun Bao, Guofeng Zhang, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="http://www.cad.zju.edu.cn/home/gfzhang/papers/object_nerf/object_nerf.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://zju3dv.github.io/object_nerf/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_deeppanocontext.png" alt="teaser_21cvpr_deeppanocontext"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_deeppanocontext" href="https://arxiv.org/pdf/2108.10743.pdf">DeepPanoContext: Panoramic 3D Scene Understanding with Holistic Scene Context Graph and Relation-based Optimization</a></div> 
-                <div class="authors">
-                  Cheng Zhang, <strong>Zhaopeng Cui</strong>&#8224, Cai Chen, Shuaicheng Liu&#8224, Bing Zeng, Hujun Bao, and Yinda Zhang&#8224. 
-                </div>
-				<div>
-                  <span class="venue">ICCV 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2108.10743.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/dpc/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_scene.png" alt="teaser_21cvpr_scene"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_scene" href="https://arxiv.org/pdf/2103.06422.pdf">Holistic 3D Scene Understanding from a Single Image with Implicit Representation</a></div> 
-                <div class="authors">
-                  Cheng Zhang*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Bing Zeng, Marc Pollefeys, and Shuaicheng Liu&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2103.06422.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://chengzhag.github.io/publication/im3d/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21cvpr_face.png" alt="teaser_21cvpr_face"></div>
-              <div class="text">
-                <div class="title"><a name="21cvpr_face" href="https://arxiv.org/pdf/2104.03493.pdf">Riggable 3D Face Reconstruction via In-Network Optimization</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>&#8224, Xiaoming Liu, and Ping Tan&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2021</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2104.03493.pdf">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/21tip_hand_pose.png" alt="teaser_21tip_hand_pose"></div>
-              <div class="text">
-                <div class="title"><a name="21tip_hand_pose" href="https://ieeexplore.ieee.org/abstract/document/9398571/">Hand Pose Understanding with Large-Scale Photo-Realistic Rendering Dataset</a></div> 
-                <div class="authors">
-                  Xiaoming Deng*&#8224, Yinda Zhang*, Jian Shi*, Yuying Zhu, Dachuan Cheng, Dexin Zuo, <strong>Zhaopeng Cui</strong>, Ping Tan, Liang Chang, Hongan Wang.
-                </div>
-				<div>
-                  <span class="venue">IEEE Transactions on Image Processing, 2021</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/abstract/document/9398571/">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20tip_hand_shape.png" alt="teaser_20tip_hand_shape"></div>
-              <div class="text">
-                <div class="title"><a name="20tip_hand_shape" href="https://ieeexplore.ieee.org/abstract/document/9262071/">Weakly Supervised Learning for Single Depth-Based Hand Shape Recovery</a></div> 
-                <div class="authors">
-                  Xiaoming Deng&#8224, Yuying Zhu, Yinda Zhang&#8224, <strong>Zhaopeng Cui</strong>&#8224, Ping Tan, Wentian Qu, Cuixia Ma, and Hongan Wang. 
-                </div>
-				<div>
-                  <span class="venue">IEEE Transactions on Image Processing, 2020</span> /
-                  <span class="tag"><a href="https://ieeexplore.ieee.org/abstract/document/9262071/">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_dist.PNG" alt="teaser_dist"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_dist" href="https://arxiv.org/pdf/1911.13225.pdf">DIST: Rendering Deep Implicit Signed Distance Function with Differentiable Sphere Tracing</a></div> 
-                <div class="authors">
-                  Shaohui Liu, Yinda Zhang, Songyou Peng, Boxin Shi, Marc Pollefeys, and <strong>Zhaopeng Cui</strong>&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1911.13225.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://b1ueber2y.me/projects/DIST-Renderer/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_human_depth.PNG" alt="teaser_20cvpr_human_depth"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_human_depth" href="https://arxiv.org/pdf/2005.03358.pdf">Self-Supervised Human Depth Estimation from Monocular Videos</a></div> 
-                <div class="authors">
-                  Feitong Tan*, Hao Zhu*, <strong>Zhaopeng Cui</strong>, Siyu Zhu, Marc Pollefeys, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/2005.03358.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/sfu-gruvi-3dv/Self-Supervised-Human-Depth">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_nrsfm.PNG" alt="teaser_20cvpr_nrsfm"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_nrsfm" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Deep Facial Non-Rigid Multi-View Stereo</a></div> 
-                <div class="authors">
-                  Ziqian Bai, <strong>Zhaopeng Cui</strong>, Jamal Ahmed Rahim, Xiaoming Liu, and Ping Tan. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Bai_Deep_Facial_Non-Rigid_Multi-View_Stereo_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/zqbai-jeremy/DFNRMVS">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_satellite.PNG" alt="teaser_20cvpr_satellite"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_satellite" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Geometry-Aware Satellite-to-Ground Image Synthesis for Urban Areas</a></div> 
-                <div class="authors">
-                  Xiaohu Lu*, Zuoyue Li*, <strong>Zhaopeng Cui</strong>&#8224, Martin R. Oswald, Marc Pollefeys, and Rongjun Qin&#8224. 
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Lu_Geometry-Aware_Satellite-to-Ground_Image_Synthesis_for_Urban_Areas_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/lizuoyue/sate_to_ground">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19cvpr_deeplidar.png" alt="teaser_19cvpr_deeplidar"></div>
-              <div class="text">
-                <div class="title"><a name="19cvpr_deeplidar" href="https://arxiv.org/pdf/1812.00488.pdf">DeepLiDAR: Deep Surface Normal Guided Depth Prediction for Outdoor Scene from Sparse LiDAR Data and Single Color Image</a></div> 
-                <div class="authors">
-                  Jiaxiong Qiu*, <strong>Zhaopeng Cui</strong>*, Yinda Zhang*, Xingdi Zhang, Shuaicheng Liu&#8224, Bing Zeng, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2019</span> /
-                  <span class="tag"><a href="https://arxiv.org/pdf/1812.00488.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/JiaxiongQ/DeepLiDAR">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="text anchor" id="vip"><h4>Video and Image Processing</h4></div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/20cvpr_deep_shutter.PNG" alt="teaser_20cvpr_deep_shutter"></div>
-              <div class="text">
-                <div class="title"><a name="20cvpr_deep_shutter" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Deep Shutter Unrolling Network</a></div> 
-                <div class="authors">
-                  Peidong Liu, <strong>Zhaopeng Cui</strong>, Viktor Larsson, and Marc Pollefeys.
-                </div>
-				<div>
-                  <span class="venue">CVPR 2020</span> /
-                  <span class="tag"><a href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Deep_Shutter_Unrolling_Network_CVPR_2020_paper.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/ethliup/DeepUnrollNet">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19nips.png" alt="teaser_19nips"></div>
-              <div class="text">
-                <div class="title"><a name="19nips" href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Reflection Separation using a Pair of Unpolarized and Polarized Images</a></div> 
-                <div class="authors">
-                  Youwei Lyu*, <strong>Zhaopeng Cui*</strong>, Si Li, Marc Pollefeys, and Boxin Shi.
-                </div>
-				<div>
-                  <span class="venue">NeurIPS 2019</span> /
-                  <span class="tag"><a href="https://papers.nips.cc/paper/9598-reflection-separation-using-a-pair-of-unpolarized-and-polarized-images.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="https://github.com/YouweiLyu/reflection_separation_with_un-polarized_images">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/19olt.png" alt="teaser_19olt"></div>
-              <div class="text">
-                <div class="title"><a name="19olt" href="https://www.sciencedirect.com/science/article/abs/pii/S0030399218304833">Photo2Silhouette: Transferring silhouette photo style for images</a></div> 
-                <div class="authors">
-                  Henan Li, Lili Wan&#8224, Shenghui Wang, and <strong>Zhaopeng Cui</strong>.
-                </div>
-				<div>
-                  <span class="venue">Optics & Laser Technology, 2019</span> /
-                  <span class="tag"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0030399218304833">Paper</a></span> 
-                </div>				
-              </div>
-            </div>
-			
-			<div class="publication">
-              <div class="img"><img class="img_responsive" src="./ZhaopengCui_files/17sig.jpg" alt="teaser_17sig"></div>
-              <div class="text">
-                <div class="title"><a name="17sig" href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Time Slice Video Synthesis by Robust Video Alignment</a></div> 
-                <div class="authors">
-                  <strong>Zhaopeng Cui</strong>, Oliver Wang, Ping Tan, and Jue Wang.
-                </div>
-				<div>
-                  <span class="venue">SIGGRAPH 2017</span> /
-                  <span class="tag"><a href="https://zhpcui.github.io/projects/timeslice/timeslice-authorversion.pdf">Paper</a></span> / 
-                  <span class="tag"><a href="http://gruvi.cs.sfu.ca/project/timeslice/">Project Page</a></span>
-                </div>				
-              </div>
-            </div>
-			
-          
-          </script>	
-
-        </div>  <!-- content -->
-		
-		<div class="content anchor" id="contact">
-         <div class="text">
-            <h3 style="margin-bottom:.5em">Contact</h3>
-            <ul style="padding-bottom:1em">
-				<li>+86 571 88206681</li>
-				<li>Room 502, Mengminwei Building, Zijingang Campus, Zhejiang Univeristy</li>
-            </ul>
-          </div>
-		</div>
-
-      </div> <!-- container -->
-    </div> <!-- outer container -->
-
-    <script>showPubs(0);</script>
-    <script>var scroll = new SmoothScroll('a[href*="#"]', {speed: 1000});</script>
-
-  
-
-
-</body></html>
+</body>
+</html>

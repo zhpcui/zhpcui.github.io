@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group | Zhaopeng Cui</title>
+  <meta name="description" content="Research group of Zhaopeng Cui" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-soft:#f7f8fa;
+      --text:#111827;
+      --text-light:#4b5563;
+      --line:#e5e7eb;
+      --primary:#1f4ed8;
+      --primary-dark:#173ea8;
+      --tag:#eef2ff;
+      --maxw:1100px;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.7;
+    }
+
+    a{
+      color:var(--primary);
+      text-decoration:none;
+    }
+    a:hover{
+      color:var(--primary-dark);
+      text-decoration:underline;
+    }
+
+    .container{
+      width:min(calc(100% - 40px), var(--maxw));
+      margin:0 auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(229,231,235,0.85);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+
+    .brand{
+      font-weight:700;
+      font-size:1rem;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      font-size:0.95rem;
+    }
+
+    .nav-links a{
+      color:var(--text-light);
+    }
+
+    .nav-links a:hover{
+      color:var(--primary);
+      text-decoration:none;
+    }
+
+    section{
+      padding:64px 0;
+    }
+
+    .page-header{
+      padding:72px 0 28px;
+    }
+
+    .page-header h1{
+      margin:0 0 10px;
+      font-size:2.3rem;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    .page-desc{
+      margin:0;
+      max-width:760px;
+      color:var(--text-light);
+      font-size:1rem;
+    }
+
+    .highlight-box{
+      margin-top:24px;
+      padding:24px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    }
+
+    .highlight-box p{
+      margin:0;
+      color:var(--text-light);
+    }
+
+    .group-section{
+      margin-top:36px;
+    }
+
+    .group-title{
+      margin:0 0 18px;
+      font-size:1.35rem;
+      letter-spacing:-0.02em;
+    }
+
+    .people-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .person-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+
+    .person-card:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    .person-photo{
+      width:84px;
+      height:84px;
+      border-radius:50%;
+      object-fit:cover;
+      background:#f3f4f6;
+      border:1px solid var(--line);
+      display:block;
+      margin-bottom:14px;
+    }
+
+    .person-name{
+      margin:0 0 4px;
+      font-size:1.05rem;
+      line-height:1.3;
+    }
+
+    .person-role{
+      margin:0 0 10px;
+      color:var(--text-light);
+      font-size:0.95rem;
+    }
+
+    .person-desc{
+      margin:0;
+      color:var(--text-light);
+      font-size:0.95rem;
+    }
+
+    .person-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:12px;
+      font-size:0.94rem;
+      font-weight:600;
+    }
+
+    .simple-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .simple-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px 18px;
+      color:var(--text-light);
+    }
+
+    footer{
+      padding:28px 0 42px;
+      border-top:1px solid var(--line);
+      color:var(--text-light);
+      font-size:0.95rem;
+      margin-top:50px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 980px){
+      .people-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px){
+      .container{
+        width:min(calc(100% - 24px), var(--maxw));
+      }
+
+      section{
+        padding:48px 0;
+      }
+
+      .page-header h1{
+        font-size:2rem;
+      }
+
+      .people-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container nav">
+      <div class="brand">Zhaopeng Cui</div>
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#research">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="index.html#news">News</a>
+        <a href="index.html#service">Service</a>
+        <a href="index.html#openings">Openings</a>
+        <a href="group.html">Group</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Research Group</h1>
+        <p class="page-desc">
+          Our group works on 3D vision, scene understanding, SLAM, neural representations, embodied intelligence, and physics-informed spatial modeling.
+        </p>
+
+        <div class="highlight-box">
+          <p>
+            We are always looking for motivated students and visiting researchers. If you are interested in joining the group, please send me your CV, transcript, and a brief note on your research interests.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+
+        <div class="group-section">
+          <h2 class="group-title">Ph.D. Students</h2>
+          <div class="people-grid">
+
+            <article class="person-card">
+              <img class="person-photo" src="assets/student1.jpg" alt="Student photo">
+              <h3 class="person-name">Student Name</h3>
+              <p class="person-role">Ph.D. Student</p>
+              <p class="person-desc">
+                Research interests: 3D reconstruction, SLAM, neural rendering.
+              </p>
+              <div class="person-links">
+                <a href="#">Homepage</a>
+                <a href="#">Google Scholar</a>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="person-photo" src="assets/student2.jpg" alt="Student photo">
+              <h3 class="person-name">Student Name</h3>
+              <p class="person-role">Ph.D. Student</p>
+              <p class="person-desc">
+                Research interests: scene understanding, multimodal perception, embodied AI.
+              </p>
+              <div class="person-links">
+                <a href="#">Homepage</a>
+                <a href="#">Google Scholar</a>
+              </div>
+            </article>
+
+            <article class="person-card">
+              <img class="person-photo" src="assets/student3.jpg" alt="Student photo">
+              <h3 class="person-name">Student Name</h3>
+              <p class="person-role">Ph.D. Student</p>
+              <p class="person-desc">
+                Research interests: physics-informed modeling, dynamic scene reconstruction.
+              </p>
+              <div class="person-links">
+                <a href="#">Homepage</a>
+                <a href="#">Google Scholar</a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="group-section">
+          <h2 class="group-title">Master Students</h2>
+          <div class="people-grid">
+
+            <article class="person-card">
+              <img class="person-photo" src="assets/master1.jpg" alt="Student photo">
+              <h3 class="person-name">Student Name</h3>
+              <p class="person-role">Master Student</p>
+              <p class="person-desc">
+                Research interests: 3D perception and real-time scene modeling.
+              </p>
+            </article>
+
+            <article class="person-card">
+              <img class="person-photo" src="assets/master2.jpg" alt="Student photo">
+              <h3 class="person-name">Student Name</h3>
+              <p class="person-role">Master Student</p>
+              <p class="person-desc">
+                Research interests: embodied navigation and spatial intelligence.
+              </p>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="group-section">
+          <h2 class="group-title">Visiting Students / Interns</h2>
+          <div class="simple-list">
+            <div class="simple-item">Student Name — Visiting Student, Institution Name</div>
+            <div class="simple-item">Student Name — Research Intern, Institution Name</div>
+          </div>
+        </div>
+
+        <div class="group-section">
+          <h2 class="group-title">Alumni</h2>
+          <div class="simple-list">
+            <div class="simple-item">Student Name — Now at Company / University</div>
+            <div class="simple-item">Student Name — Now at Company / University</div>
+            <div class="simple-item">Student Name — Now at Company / University</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Zhaopeng Cui</div>
+      <div>Zhejiang University · Hangzhou, China</div>
+    </div>
+  </footer>
+
+</body>
+</html>
